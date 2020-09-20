@@ -1,20 +1,35 @@
-name: Laravel
-
-on:
-  push:
-    branches: [ master ]
-
+on: push
+name: CI
 jobs:
-  laravel-tests:
-
+  phpunit:
     runs-on: ubuntu-latest
+    container:
+      image: qasim683/base-image-laravel:v2
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_DATABASE: 'laratest_db'
+          MYSQL_ALLOW_EMPTY_PASSWORD: 1
+          MYSQL_PASSWORD: ""
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Copy ./*
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-    - name: assign permission on directory
-      run: chmod -R 777 storage bootstrap/cache
-    
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Install composer dependencies
+      run: |
+        composer install --no-scripts
+
+    - name: Prepare Laravel Application
+      run: |
+        cp .env.ci .env
+        php artisan key:generate
+
+    - name: Run Testsuite
+      run: vendor/bin/phpunit tests/
