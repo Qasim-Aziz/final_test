@@ -32,7 +32,7 @@ jobs:
       with:
         host: example.qbitflame.com
         username: qasim
-        key: {{ secrets.OMG_SECRET }}
+        key: ${{ secrets.OMG_SECRET }}
         port: 22
         script: |
           git pull origin master
