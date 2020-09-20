@@ -44,11 +44,9 @@ jobs:
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
       - name: Get the version
         id: vars
-        run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
-      - name: Build the tagged Docker image
-        run: docker build ./docker/Dockerfile --file Dockerfile --tag qasim683/laravel-app:${{steps.vars.outputs.tag}}
-      - name: Push the tagged Docker image
-        run: docker push qasim683/laravel-app:${{steps.vars.outputs.tag}}
-
+      - name: Build the latest Docker image
+        run: docker build ./docker/Dockerfile --file Dockerfile --tag qasim683/laravel-app:latest
+      - name: Push the latest Docker image
+        run: docker push qasim683/laravel-app:latest
   
     
