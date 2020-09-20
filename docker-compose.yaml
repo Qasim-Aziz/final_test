@@ -10,7 +10,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
       MYSQL_PASSWORD: ""
   app:
-    image: qasim683/laravel-app:1.0.0
+    image: qasim683/laravel-app:1.0.1
     ports:
       - "80:80"
     volumes:

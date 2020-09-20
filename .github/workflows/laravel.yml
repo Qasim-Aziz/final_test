@@ -19,10 +19,10 @@ jobs:
       
     - name: Docker build
       run: |
-        docker build . -t qasim683/laravel-app:1.0.0
+        docker build . -t qasim683/laravel-app:1.0.1
     - name: Docker push images
       run: |
-        docker push docker.io/qasim683/laravel-app:1.0.0
+        docker push docker.io/qasim683/laravel-app:1.0.1
   # laravel-deploy:
   #   runs-on: ubuntu-latest
   #   steps:
