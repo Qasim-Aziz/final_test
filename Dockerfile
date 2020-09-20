@@ -25,9 +25,10 @@ RUN mv vhost.conf /etc/apache2/sites-available/000-default.conf
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN mkdir -p /var/www/html/storage/framework/sessions
 RUN composer install
-RUN chmod 775 -R /storage/framework/view
-RUN chmod 775 -R /storage/framework/sessions
-RUN chmod 775 -R /storage/framework/cache
+RUN chmod 777 -R /bootstrap/cache
+RUN chmod 777 -R /storage/framework/views
+RUN chmod 777 -R /storage/framework/sessions
+RUN chmod 777 -R /storage/framework/cache
 RUN chmod 777 -R /var/www/html/storage/logs/laravel.log
 RUN chmod 775 -R /var/www/html
 
