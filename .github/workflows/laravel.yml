@@ -32,3 +32,10 @@ jobs:
 
     - name: Run Testsuite
       run: vendor/bin/phpunit tests/
+
+    - name: docker build
+      run: |
+        docker build ./docker -t qasim683/laravel-app:v1
+    - name: docker push
+      run: |
+        docker push qasim683/laravel-app:v1
