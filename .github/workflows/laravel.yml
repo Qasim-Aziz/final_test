@@ -35,7 +35,7 @@ jobs:
 
     - name: docker build
       run: |
-        docker build ./docker -t qasim683/laravel-app:v1
+        docker build ./docker/Dockerfile -t qasim683/laravel-app:v1
     - name: docker push
       run: |
         docker push qasim683/laravel-app:v1
