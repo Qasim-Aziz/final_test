@@ -32,6 +32,7 @@
 
 #     - name: Run Testsuite
 #       run: vendor/bin/phpunit tests/
+####                                                     facfe0a2f5253ea8f998199d6892a3e4c9bd2a9f       
 on: push
 name: CI
 jobs:
@@ -42,8 +43,6 @@ jobs:
       - uses: actions/checkout@v1 # may be actions/checkout@v2 now
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
-      - name: Get the version
-        id: vars
       - name: Build the latest Docker image
         run: docker build ./docker/Dockerfile --file Dockerfile --tag qasim683/laravel-app:latest
       - name: Push the latest Docker image
