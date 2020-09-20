@@ -1,6 +1,9 @@
 name: Docker build for Laravel
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
