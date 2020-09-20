@@ -15,4 +15,4 @@ jobs:
         ls
     - name: docker build
       run: |
-        docker build ./.docker -t qasim683/laravel-app:1.0.0
+        docker build . -t qasim683/laravel-app:1.0.0
