@@ -11,7 +11,7 @@ jobs:
     - name: testing Deployment
       uses: appleboy/ssh-action@master
       with:
-        host: qasim@dev-server
+        host: qbit-server
         username: qasim
         key: ${{ secrets.OMG_SECRET }}
         port: 22
