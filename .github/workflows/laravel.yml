@@ -1,56 +1,61 @@
-# on: push
-# name: CI
-# jobs:
-#   phpunit:
-#     runs-on: ubuntu-latest
-#     container:
-#       image: qasim683/base-image-laravel:v1
-
-#     services:
-#       mysql:
-#         image: mysql:5.7
-#         env:
-#           MYSQL_DATABASE: 'laratest_db'
-#           MYSQL_ALLOW_EMPTY_PASSWORD: 1
-#           MYSQL_PASSWORD: ""
-#         ports:
-#           - 33306:3306
-#         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
-#     steps:
-#     - uses: actions/checkout@v1
-#       with:
-#         fetch-depth: 1
-
-#     - name: Install composer dependencies
-#       run: |
-#         composer install --no-scripts
-
-#     - name: Prepare Laravel Application
-#       run: |
-#         php artisan key:generate
-
-#     - name: Run Testsuite
-#       run: vendor/bin/phpunit tests/
-####                                                     facfe0a2f5253ea8f998199d6892a3e4c9bd2a9f       
 on: push
 name: CI
 jobs:
-  build:
+  phpunit:
     runs-on: ubuntu-latest
-  
+    container:
+      image: qasim683/base-image-laravel:v1
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_DATABASE: 'laratest_db'
+          MYSQL_ALLOW_EMPTY_PASSWORD: 1
+          MYSQL_PASSWORD: ""
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
-      - uses: actions/checkout@v1 # may be actions/checkout@v2 now
-        with:
-          fetch-depth: 1
-      -name: COPY all Files
-       run: |
-         COPY . .
-      - name: Login to DockerHub Registry
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
-      - name: Build the latest Docker image
-        run: docker build ./docker/Dockerfile --file Dockerfile --tag qasim683/laravel-app:latest
-      - name: Push the latest Docker image
-        run: docker push qasim683/laravel-app:latest
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Install composer dependencies
+      run: |
+        composer install --no-scripts
+
+    - name: Prepare Laravel Application
+      run: |
+        php artisan key:generate
+
+    - name: Run Testsuite
+      run: vendor/bin/phpunit tests/
+    
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
+      
+    - name: Build the latest Docker image
+      run: docker build ./docker/Dockerfile --file Dockerfile --tag docker.io/qasim683/laravel-app:latest
+    - name: Push the latest Docker image
+      run: docker push docker.io/qasim683/laravel-app:latest
+  
+####                                                     facfe0a2f5253ea8f998199d6892a3e4c9bd2a9f      
+# on: push
+# name: CI
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+  
+#     steps:
+#       - uses: actions/checkout@v1 # may be actions/checkout@v2 now
+#       - name: Login to DockerHub Registry
+#         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
+      
+#       - name: Build the latest Docker image
+#         run: docker build ./docker/Dockerfile --file Dockerfile --tag qasim683/laravel-app:latest
+#       - name: Push the latest Docker image
+#         run: docker push qasim683/laravel-app:latest
   
     
