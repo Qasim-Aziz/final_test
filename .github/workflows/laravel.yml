@@ -30,13 +30,19 @@ jobs:
     - name: Add SSH Credentials
       uses: qasim683/ssh-key-action@master
       with:
-        key: ${{ secrets.Dev-server-google }} # required, this will be used when transferring files to your deploy targets
-        known_hosts: Dev-server # required, should match up with your deploy targets (see below)
-    - name: Deploy to Staging
-      uses: qasim683/final_test@master
-      with:
-        deploy_targets: 'server-1.example.com, server-2.example.com' # required, comma separated list of servers to deploy to.
+        host: example.qbitflame.com
+        username: qasim
+        key: {{ secrets.OMG_SECRET }}
+        port: 22
+        script: |
+          git pull origin master
+          git status
 
-        ssh_user: 'root' # optional, user to connect to deploy targets with. Defaults to 'root'
-        compose_file: 'docker-compose.yml' # optional, path/filename of your docker-compose file. Defaults to 'docker-compose.yml'
-        validate_container: 'app' # optional, validate that the given container name is running. Otherwise, throw an error. Defaults to 'app' 
+    # - name: Deploy to Staging
+    #   uses: qasim683/final_test@master
+    #   with:
+    #     deploy_targets: 'server-1.example.com, server-2.example.com' # required, comma separated list of servers to deploy to.
+
+    #     ssh_user: 'root' # optional, user to connect to deploy targets with. Defaults to 'root'
+    #     compose_file: 'docker-compose.yml' # optional, path/filename of your docker-compose file. Defaults to 'docker-compose.yml'
+    #     validate_container: 'app' # optional, validate that the given container name is running. Otherwise, throw an error. Defaults to 'app' 
