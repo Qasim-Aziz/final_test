@@ -26,5 +26,9 @@ jobs:
       run: |
         composer install --no-scripts
 
+    - name: Prepare Laravel Application
+      run: |
+        php artisan key:generate
+
     - name: Run Testsuite
       run: vendor/bin/phpunit tests/
