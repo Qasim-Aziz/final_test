@@ -23,20 +23,20 @@ jobs:
     - name: Docker push images
       run: |
         docker push docker.io/qasim683/laravel-app:1.0.0
-  laravel-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Add SSH Credentials
-      uses: qasim683/ssh-key-action@master
-      with:
-        host: example.qbitflame.com
-        username: qasim
-        key: ${{ secrets.OMG_SECRET }}
-        port: 22
-        script: |
-          git pull origin master
-          git status
+  # laravel-deploy:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@master
+  #   - name: Add SSH Credentials
+  #     uses: qasim683/ssh-key-action@master
+  #     with:
+  #       host: example.qbitflame.com
+  #       username: qasim
+  #       key: ${{ secrets.OMG_SECRET }}
+  #       port: 22
+  #       script: |
+  #         git pull origin master
+  #         git status
 
     # - name: Deploy to Staging
     #   uses: qasim683/final_test@master

@@ -1,0 +1,38 @@
+name: Deployment Workflow
+on:
+  push:
+    branches:
+      - master
+jobs:
+  job_one:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: testing Deployment
+      uses: qasim683/ssh-action@master
+      with:
+        host: example.qbitflame.com
+        username: qasim
+        key: ${{ secrets.OMG_SECRET }}
+        port: 22
+        script: |
+          cd final_test
+          git pull origin master
+          git status
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+          
