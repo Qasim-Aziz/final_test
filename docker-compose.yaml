@@ -10,10 +10,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
       MYSQL_PASSWORD: ""
   app:
-    build:
-      context: .
-      dockerfile: .docker/Dockerfile
-    image: 'laravelapp'
+    image: qasim683/laravel-app:1.0.0
     ports:
       - "80:80"
     volumes:
