@@ -33,7 +33,7 @@ jobs:
     steps:
     - name: testing Deployment
     - uses: appleboy/ssh-action@master
-    - uses: actions/checkout@master
+    - uses: actions/checkout@testing
       with:
         host: 34.121.38.48
         username: qasim
