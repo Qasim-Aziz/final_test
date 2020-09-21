@@ -28,9 +28,11 @@ RUN mkdir -p /var/www/html/storage/framework/sessions
 RUN mkdir -p /storage/framework/views
 RUN mkdir -p /storage/framework/sessions
 RUN mkdir -p  /storage/framework/cache
-RUN chmod 777 -R storage
+
 RUN chmod 777 -R bootstrap
 RUN chmod 775 -R /var/www/html
+RUN chmod -R 775 storage
+RUN chown -R www-data:www-data storage
 RUN composer install
 RUN chmod 777 -R /storage/logs
 RUN chown -R www-data:www-data /var/www/html \
