@@ -13,15 +13,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: testing Deployment
-      uses: appleboy/ssh-action@dev
+      uses: appleboy/ssh-action@master
       with:
         host: 34.121.38.48
         username: qasim
         key: ${{ secrets.OMG_SECRET }}
         port: 22
         script: |
-          
           git clone https://github.com/qasim683/final_test.git
           cd final_test
+          git pull origin dev
           mv env.dev .env
+          
           docker-compose -f docker-compose-dev.yaml up --build -d
