@@ -9,7 +9,7 @@ jobs:
   build-job:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@testing
+    - uses: actions/checkout@master
     - name: Docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER }}
@@ -31,8 +31,8 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: testing Deployment dev
-      uses: appleboy/ssh-action@testing
+    - name: testing Deployment
+      uses: appleboy/ssh-action@master
       with:
         host: 34.121.38.48
         username: qasim
