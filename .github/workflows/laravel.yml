@@ -39,6 +39,8 @@ jobs:
         script: |
           cd final_test
           docker-comose down
+          docker rm -f $(docker ps -a -q)
+          docker image rm -f $(docker images -q)
           cd ..
           rm -Rf final_test
           git clone https://github.com/qasim683/final_test.git
