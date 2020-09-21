@@ -32,7 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: testing Deployment
-      uses: appleboy/ssh-action@master
+    - uses: appleboy/ssh-action@master
+    - uses: actions/checkout@master
       with:
         host: 34.121.38.48
         username: qasim
