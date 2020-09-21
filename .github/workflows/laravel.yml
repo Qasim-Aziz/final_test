@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  laravel-app:
+  build-job:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -23,4 +23,24 @@ jobs:
     - name: Docker push images
       run: |
         docker push docker.io/qasim683/laravel-app:1.0.2
-  
+  Deploy-job:
+    needs: [build-job]
+    if: success()
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: testing Deployment
+      uses: appleboy/ssh-action@master
+      with:
+        host: 34.121.38.48
+        username: qasim
+        key: ${{ secrets.OMG_SECRET }}
+        port: 22
+        script: |
+          cd final_test
+          docker-comose down
+          cd ..
+          rm -Rf final_test
+          git clone https://github.com/qasim683/final_test.git
+          cd final_test
+          docker-compose up -d
