@@ -16,3 +16,4 @@ services:
     - DB_ROOT_PASSWORD=tst03006891683  
     ports:
       - "80:80"
+      
