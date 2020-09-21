@@ -28,6 +28,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN mkdir -p /var/www/html/storage/framework/views
 RUN mkdir -p /var/www/html/storage/framework/sessions
 RUN mkdir -p  /var/www/html/storage/framework/cache
+RUN mkdir -p  /var/www/html/storage/logs
 
 RUN chmod 777 -R bootstrap
 RUN chmod 775 -R /var/www/html
