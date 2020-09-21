@@ -24,5 +24,6 @@ jobs:
           cd final_test
           git pull origin dev
           mv env.dev .env
+          cd dev-docker
           
           docker-compose -f docker-compose-dev.yaml up --build -d
