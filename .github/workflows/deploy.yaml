@@ -16,10 +16,13 @@ jobs:
         key: ${{ secrets.OMG_SECRET }}
         port: 22
         script: |
-          ls 
+          cd final_test
+          docker-comose down
+          cd ..
+          rm -Rf final_test
           git clone https://github.com/qasim683/final_test.git
           cd final_test
-          docker-compose up
+          docker-compose up -d
 
 
 
