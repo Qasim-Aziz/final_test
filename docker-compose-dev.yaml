@@ -12,7 +12,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: .
+      dockerfile: ./Dockerfile
     image: 'laravelapp'
     ports:
       - "80:80"
