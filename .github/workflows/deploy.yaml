@@ -1,5 +1,0 @@
-Name : Prod server
-
-on:
-  push:
-    branch: [Prod]

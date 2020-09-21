@@ -16,7 +16,9 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD }}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      
+    - name: Prepare environment for Dev build
+      run: |
+        cp env.dev .env
     - name: Docker build
       run: |
         docker build . -t qasim683/laravel-app:1.0.2
