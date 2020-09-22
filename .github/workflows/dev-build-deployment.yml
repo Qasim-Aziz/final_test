@@ -42,4 +42,4 @@ jobs:
           
           git clone https://github.com/qasim683/final_test.git
           cd final_test
-          docker-compose up
+          docker-compose up -d
