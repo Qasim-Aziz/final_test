@@ -23,9 +23,9 @@ jobs:
     - name: create directory
       run: |
         mkdir storage
-    - name: create  storage directory
+    - name: create  pwdstorage directory
       run: |
-        cd storage
+        ls
     - name: create framework directory
       run: |
         mkdir framework
