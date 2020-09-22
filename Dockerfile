@@ -6,6 +6,7 @@ WORKDIR /var/www/html
 
 RUN apt-get update && apt-get install -y \
         libpng-dev \
+        apt-utils \
         zlib1g-dev \
         libxml2-dev \
         libzip-dev \
