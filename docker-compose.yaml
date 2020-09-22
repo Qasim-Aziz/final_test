@@ -3,7 +3,7 @@ services:
 
   app:
   
-    image: qasim683/laravel-app:1.0.2
+    image: qasim683/laravel-app:1.0.3
     ports:
       - "80:80"
 
