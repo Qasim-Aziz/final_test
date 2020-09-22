@@ -32,8 +32,7 @@ RUN chmod 777 -R bootstrap
 RUN chmod 775 -R /var/www/html
 RUN chmod 777 -R /var/www/html/storage
 RUN chown -R www-data:www-data /var/www/html/storage
-RUN composer clear-cache
-RUN composer update
+
 RUN chmod 777 -R /var/www/html/storage/logs
 
 RUN chown -R www-data:www-data /var/www/html \
