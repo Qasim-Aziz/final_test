@@ -20,6 +20,19 @@ jobs:
     - name: Prepare environment for prod build
       run: |
         cp env.prod .env
+    - name: create directory
+      script: |
+        mkdir storage
+        cd storage
+        mkdir framework
+        mkdir logs
+        cd framework
+        mkdir sessions
+        mkdir views
+        mkdir cache
+        cd ~
+        cd final_test
+
     - name: Docker build
       run: |
         docker build . -t qasim683/laravel-app:1.0.3
