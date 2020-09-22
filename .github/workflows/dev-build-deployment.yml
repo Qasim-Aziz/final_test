@@ -38,5 +38,4 @@ jobs:
           sudo chmod 777 -R ./*
           cp env.dev .env
           docker-compose -f docker-compose-dev.yaml up --build -d
-          docker exec -it final_test_app_1 composer update
-          docker exec -it final_test_app_1 chmod 777 -R storage
+          

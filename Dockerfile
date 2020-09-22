@@ -34,6 +34,7 @@ RUN chmod 777 -R /var/www/html/storage
 RUN chown -R www-data:www-data /var/www/html/storage
 
 RUN chmod 777 -R /var/www/html/storage/logs
-
+RUN composer clear-cache
+RUN composer update
 RUN chown -R www-data:www-data /var/www/html \
     && a2enmod rewrite
