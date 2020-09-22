@@ -27,7 +27,4 @@ jobs:
           git pull origin dev-test
           cp env.dev .env
           docker-compose -f docker-compose-dev.yaml up --build -d
-          docker exec -it final_test_app_1 sh
-          composer clear-cache
-          chmod 777 -R storage
-          exit
+          

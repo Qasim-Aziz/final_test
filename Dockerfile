@@ -25,16 +25,14 @@ RUN mv vhost.conf /etc/apache2/sites-available/000-default.conf
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 
-RUN mkdir -p /var/www/html/storage/framework/views
-RUN mkdir -p /var/www/html/storage/framework/sessions
-RUN mkdir -p  /var/www/html/storage/framework/cache
-RUN mkdir -p  /var/www/html/storage/logs
+
 
 RUN chmod 777 -R bootstrap
 RUN chmod 775 -R /var/www/html
-RUN chmod -R 777 /var/www/html/storage
-RUN chown -R www-data:www-data storage
-RUN composer install
+RUN chmod 777 -R /var/www/html/storage
+RUN chown -R www-data:www-data /var/www/html/storage
+RUN composer clear-cache
+RUN composer update
 RUN chmod 777 -R /var/www/html/storage/logs
 
 RUN chown -R www-data:www-data /var/www/html \
