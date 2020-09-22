@@ -28,6 +28,7 @@ jobs:
           mkdir storage
           cd storage
           mkdir framework
+          mkdir logs
           cd framework
           mkdir sessions
           mkdir views
