@@ -8,5 +8,4 @@ services:
     tty: true
     ports:
       - "80:80"
-    volumes:
-      - ./:/var/www/html
+    l
