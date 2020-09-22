@@ -46,10 +46,7 @@ jobs:
         mkdir cache
     - name: create cd directory
       run: |    
-        pwd
-    - name: create cd directory
-      run: |    
-        cd final_test
+        cd ~
 
     - name: Docker build
       run: |
