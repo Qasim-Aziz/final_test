@@ -22,34 +22,10 @@ jobs:
         cp env.prod .env
     - name: create directory
       run: |
-        mkdir storage
-    - name: create  storage directory
+        mkdir -p storage/logs
+    - name: create directories
       run: |
-        cd storage
-    - name: create logs directory
-      run: |
-        mkdir logs
-    - name: create framework directory
-      run: |
-        mkdir framework
-    - name: create logs directory
-      run: |    
-        ls
-    - name: create cd into framework directory
-      run: |    
-        cd framework
-    - name: create  sessions directory
-      run: |    
-        mkdir sessions
-    - name: create  views directory
-      run: |    
-        mkdir views
-    - name: create  cache directory
-      run: |   
-        mkdir cache
-    - name: create cd directory
-      run: |    
-        cd ~
+        mkdir -p storage/framework/{sessions,views,cache}
 
     - name: Docker build
       run: |
