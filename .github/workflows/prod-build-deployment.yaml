@@ -3,7 +3,7 @@ name: Docker build for Laravel
 on:
   push:
     branches:
-      - Prod
+      - master-test
 
 jobs:
   build-job:

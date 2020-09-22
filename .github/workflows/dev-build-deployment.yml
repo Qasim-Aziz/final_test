@@ -1,9 +1,9 @@
-name: Docker build for Laravel
+name: Docker build-dev for Laravel
 
 on:
   push:
     branches:
-      - dev-test
+      - dev
 
 jobs:
 
@@ -15,18 +15,18 @@ jobs:
     - name: testing Deployment
       uses: appleboy/ssh-action@master
       with:
-        host: 130.211.208.37 
-        username: qasim
-        key: ${{ secrets.OMG_SECRET }}
+        host: 138.68.64.220
+        username: root
+        key: ${{ secrets.ID_HYDRIA_GUEST_DEV }}
         port: 22
         script: |
           docker rm -f $(docker ps -a -q)
           docker image rm -f $(docker images -q)
-          sudo  rm -Rf final_test
-          git clone https://github.com/qasim683/final_test.git
+          sudo  rm -Rf hydria-web
+          git clone https://github.com/keywayhq/hydria-web.git
           
-          cd final_test
-          git pull origin dev-test
+          cd hydria-web
+          git pull origin dev
           mkdir storage
           cd storage
           mkdir framework
@@ -36,7 +36,7 @@ jobs:
           mkdir views
           mkdir cache
           cd ~
-          cd final_test
+          cd hydria-web
           sudo chmod 777 -R ./*
           cp env.dev .env
           docker-compose -f docker-compose-dev.yaml up --build -d
