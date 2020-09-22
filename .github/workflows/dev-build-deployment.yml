@@ -35,6 +35,7 @@ jobs:
           mkdir cache
           cd ~
           cd final_test
+          sudo chmod 777 -R ./*
           cp env.dev .env
           docker-compose -f docker-compose-dev.yaml up --build -d
           
