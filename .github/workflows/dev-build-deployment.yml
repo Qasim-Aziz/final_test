@@ -34,17 +34,14 @@ jobs:
     - name: testing Deployment
       uses: appleboy/ssh-action@master
       with:
-        host: 34.121.38.48
+        host: 130.211.208.37 
         username: qasim
         key: ${{ secrets.OMG_SECRET }}
         port: 22
         script: |
-          cd final_test
-          docker-comose down
-          docker rm -f $(docker ps -a -q)
-          docker image rm -f $(docker images -q)
-          cd ..
-          rm -Rf final_test
+          
           git clone https://github.com/qasim683/final_test.git
           cd final_test
-          docker-compose up -d
+          git pull origin feature
+        
+          docker-compose up
