@@ -1,16 +1,14 @@
 version: '3'
 services: 
-  db:
-    image: mysql:5.7
-    restart: always
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_DATABASE: 'laratest_db'
-      MYSQL_ALLOW_EMPTY_PASSWORD: 1
-      MYSQL_PASSWORD: ""
+  
   app:
     image: qasim683/laravel-app:1.0.2
     ports:
       - "80:80"
-    
+    environment: 
+    - DB_CONNECTION=mysql
+    - DB_HOST=weighty-nation-272311:us-central1:mysql
+    - DB_PORT=3306
+    - DB_DATABASE=laravel
+    - DB_USERNAME=root
+    - DB_PASSWORD=

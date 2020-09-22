@@ -36,5 +36,11 @@ RUN chmod -R 777 /var/www/html/storage
 RUN chown -R www-data:www-data storage
 RUN composer install
 RUN chmod 777 -R /var/www/html/storage/logs
+ENV DB_CONNECTION=mysql
+ENV DB_HOST=weighty-nation-272311:us-central1:mysql
+ENV DB_PORT=3306
+ENV DB_DATABASE=laravel
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=
 RUN chown -R www-data:www-data /var/www/html \
     && a2enmod rewrite
