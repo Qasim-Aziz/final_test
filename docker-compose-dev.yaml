@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     image: 'laravelapp'
+    tty: true
     ports:
       - "80:80"
     volumes:
