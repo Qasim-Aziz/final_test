@@ -25,6 +25,15 @@ jobs:
           
           cd final_test
           git pull origin dev-test
+          mkdir storage
+          cd storage
+          mkdir framework
+          cd framework
+          mkdir sessions
+          mkdir views
+          mkdir cache
+          cd ~
+          cd final_test
           cp env.dev .env
           docker-compose -f docker-compose-dev.yaml up --build -d
           
