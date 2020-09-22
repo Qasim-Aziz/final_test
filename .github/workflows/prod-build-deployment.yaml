@@ -23,15 +23,18 @@ jobs:
     - name: create directory
       run: |
         mkdir storage
-    - name: create  pwdstorage directory
+    - name: create  storage directory
       run: |
-        ls
+        cd storage
+    - name: create logs directory
+        run: |
+        mkdir logs
     - name: create framework directory
       run: |
         mkdir framework
     - name: create logs directory
       run: |    
-        mkdir logs
+        ls
     - name: create cd into framework directory
       run: |    
         cd framework
