@@ -27,7 +27,7 @@ jobs:
       run: |
         cd storage
     - name: create logs directory
-        run: |
+      run: |
         mkdir logs
     - name: create framework directory
       run: |
