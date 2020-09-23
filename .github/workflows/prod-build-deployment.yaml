@@ -47,8 +47,8 @@ jobs:
         key: ${{ secrets.OMG_SECRET }}
         port: 22
         script: |
+         
           
-          git clone https://github.com/qasim683/final_test.git
           git pull origin master-test-1
-          cd final_test
+          
           docker-compose up -d
