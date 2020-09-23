@@ -44,6 +44,7 @@ RUN composer update
 RUN chown -R www-data:www-data /var/www/html \
     && a2enmod rewrite \
     && a2enmod ssl \
-    && a2enmod headers \
-    && a2ensite default-ssl
+    && a2enmod headers
+    
+RUN /etc/init.d/apache2 reload && a2ensite default-ssl
 RUN /etc/init.d/apache2 reload
