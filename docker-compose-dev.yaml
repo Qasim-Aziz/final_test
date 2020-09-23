@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     image: 'laravelapp'
+    container_name: hydria-web
     tty: true
     ports:
       - "80:80"

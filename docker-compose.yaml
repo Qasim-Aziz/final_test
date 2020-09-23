@@ -4,6 +4,7 @@ services:
   app:
   
     image: qasim683/laravel-app:1.0.3
+    container_name: hydria-web
     ports:
       - "80:80"
 
