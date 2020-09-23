@@ -26,15 +26,24 @@ RUN mv vhost.conf /etc/apache2/sites-available/000-default.conf
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 
-
-
+RUN rm -f /etc/apache2/sites-available/default-ssl.conf
+COPY default-ssl.conf /etc/apache2/sites-availble
+COPY hydria-web.crt /etc/ssl/certs
+COPY hydria-web.key /etc/ssl/private
 RUN chmod 777 -R bootstrap
 RUN chmod 775 -R /var/www/html
 RUN chmod 777 -R /var/www/html/storage
 RUN chown -R www-data:www-data /var/www/html/storage
+RUN chown www-data:www-data /etc/ssl/certs/hydria-web.crt
+RUN chown www-data:www-data /etc/ssl/private/hydria-web.key
 
 RUN chmod 777 -R /var/www/html/storage/logs
+
 RUN composer clear-cache
 RUN composer update
 RUN chown -R www-data:www-data /var/www/html \
-    && a2enmod rewrite
+    && a2enmod rewrite \
+    && a2enmod ssl \
+    && a2enmod headers \
+    && a2ensite default-ssl
+RUN /etc/init.d/apache2 reload

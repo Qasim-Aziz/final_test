@@ -3,7 +3,7 @@ name: Docker build for Laravel
 on:
   push:
     branches:
-      - dev-test
+      - master-test-lts
 
 jobs:
 
@@ -26,7 +26,9 @@ jobs:
           git clone https://github.com/qasim683/final_test.git
           
           cd final_test
-          git pull origin dev-test
+          git pull origin master-test-lts
+          
+          
           mkdir storage
           cd storage
           mkdir framework
@@ -35,6 +37,7 @@ jobs:
           mkdir sessions
           mkdir views
           mkdir cache
+
           cd ~
           cd final_test
           sudo chmod 777 -R ./*
