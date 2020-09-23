@@ -48,7 +48,8 @@ jobs:
         port: 22
         script: |
          
-          
+          git clone https://github.com/qasim683/final_test.git
+          cd final_test
           git pull origin master-test-1
           
           docker-compose up -d
