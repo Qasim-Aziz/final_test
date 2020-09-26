@@ -27,7 +27,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 
 RUN rm -f /etc/apache2/sites-available/default-ssl.conf
-COPY default-ssl.conf /etc/apache2/sites-availble
+COPY default-ssl.conf /etc/apache2/sites-available
 COPY hydria-web.crt /etc/ssl/certs
 COPY hydria-web.key /etc/ssl/private
 RUN chmod 777 -R bootstrap

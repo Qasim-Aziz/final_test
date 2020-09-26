@@ -1,0 +1,5 @@
+ && a2enmod ssl \
+    && a2enmod headers
+    
+RUN /etc/init.d/apache2 reload && a2ensite default-ssl
+RUN /etc/init.d/apache2 reload
